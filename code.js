@@ -1,11 +1,17 @@
-var A_val = document.getElementById("A_val");
-var B_val = document.getElementById("B_val");
+var val = [
+	document.getElementById("A_val"),
+	document.getElementById("B_val")
+];
 
-var A_pred = document.getElementById("A_pred");
-var B_pred = document.getElementById("B_pred");
+var pred = [
+	document.getElementById("A_pred"),
+	document.getElementById("B_pred")
+];
 
-var A_pred_val = document.getElementById("A_pred_val");
-var B_pred_val = document.getElementById("B_pred_val");
+var pred_val = [
+	document.getElementById("A_pred_val"),
+	document.getElementById("B_pred_val")
+];
 
 A_val.onblur = f;
 B_val.onblur = f;
@@ -27,24 +33,15 @@ function compare(pred, pred_val, val) {
 };
 
 function f() {
-	var obj = this;
-	//var obj = event.target;
-	if(obj == A_val) {
-		if(compare(A_pred, A_pred_val, A_val) == false) {
-			obj.style.background = "red";
-			obj.focus();
+	var obj = this; //var obj = event.target;
+	var i = val.indexOf(obj);
+	if(i >= 0) {
+		if(compare(pred[i], pred_val[i], val[i]) == false) {
+			val[i].style.background = "red";
+			val[i].focus();
 		}
 		else {
-			obj.style.background = "white";
-		}
-	}
-	else if(obj == B_val) {
-		if(compare(B_pred, B_pred_val, B_val) == false) {
-			obj.style.background = "red";
-			obj.focus();
-		}
-		else {
-			obj,style.background = "white";
+			val[i].style.background = "white";
 		}
 	}
 };
