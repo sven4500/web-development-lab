@@ -16,20 +16,11 @@ function compare(pred, pred_val, val) {
 	var n = Number(pred.options[pred.selectedIndex].value);
 	switch(n) {
 		case 1: // val > pred_val
-			if(x > y)
-				return true;
-			else
-				return false;
+			return (x > y);
 		case 2: // val < pred_val
-			if(x < y)
-				return true;
-			else
-				return false;
+			return (x < y);
 		case 3: // val = pred_val
-			if(x == y)
-				return true;
-			else
-				return false;
+			return (x == y);
 		default:
 			return false;
 	}
