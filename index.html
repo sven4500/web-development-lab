@@ -1,0 +1,48 @@
+﻿<text>
+Рожлейс Иварс Андрисович. Вариант 16.
+<hr>
+Вводятся 2 целых числа. Проверить в скриптах, выполняемых по событию onBlur, корректность ввода. Возвращать фокус ввода при неправильных значениях. Доступ к элементам (а) обеспечить с помощью 2) атрибута идентификатора элемента. Способ назначения 2) cвойство “elem.onclick = function”.
+<hr>
+</text>
+
+<fieldset>
+	<legend>Предикат</legend>
+	<text>A:</text>
+
+<!---
+Здесь атрибут size задаёт сколькл элементов можно одновременно
+отобразить. Атрибут selected задаёт элемент по-умолчанию.
+--->
+<select id="A_pred" size="1" readonly>
+	<option value="1">></option>
+	<option value="2"><</option>
+	<option value="3" selected="selected">=</option>
+</select>
+
+<!---
+Выставляем атрибуты size и maxlength. size ограничивает 
+видимое количество символов, maxlength - вводимое.
+Атрибут value задаёт начальное значение для элемента.
+--->
+<input type='text' id="A_pred_val" size="13" maxlength="11" value="0">
+
+<br>
+<text>B:</text>
+<select id="B_pred" size="1" readonly>
+	<option value="1">></option>
+	<option value="2"><</option>
+	<option value="3" selected="selected">=</option>
+</select>
+<input type="text" id="B_pred_val" size="13" maxlength="11" value="0" />
+</fieldset>
+
+<fieldset>
+<legend>Значение</legend>
+<label for="A_val">A:</label>
+<input type="text" id="A_val" />
+<br>
+<label for="B_val">B:</label>
+<input type="text" id="B_val" />
+</fieldset>
+
+<script src="code.js"></script>
