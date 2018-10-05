@@ -1,0 +1,154 @@
+﻿<html>
+
+<head>
+<!---
+Используем библиотеку jQuery локально.
+--->
+<script src="js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+Рожлейс Иварс Андрисович. Группа 108.<br>Вариант 16.<br>
+<hr>
+Часть 1. Переделать задание 1 с доступом к элементам с помощью JQuery.<br><br>
+
+<fieldset>
+<legend>Предикат</legend>
+<text>A:</text>
+
+<!---
+Здесь атрибут size задаёт сколькл элементов можно одновременно
+отобразить. Атрибут selected задаёт элемент по-умолчанию.
+--->
+<select id="predicate" size="1" readonly>
+	<option value="1">></option>
+	<option value="2"><</option>
+	<option value="3" selected="selected">=</option>
+</select>
+
+<!---
+Выставляем атрибуты size и maxlength. size ограничивает 
+видимое количество символов, maxlength - вводимое.
+Атрибут value задаёт начальное значение для элемента.
+--->
+<input type='text' id="predicate_value" size="13" maxlength="11" value="0">
+
+<br>
+<text>B:</text>
+<select id="predicate" size="1" readonly>
+	<option value="1">></option>
+	<option value="2"><</option>
+	<option value="3" selected="selected">=</option>
+</select>
+<input type="text" id="predicate_value" size="13" maxlength="11" value="0" />
+</fieldset>
+
+<fieldset>
+<legend>Значение</legend>
+<label for="A_val">A:</label>
+<input type="text" id="valuable" />
+<br>
+<label for="B_val">B:</label>
+<input type="text" id="valuable" />
+</fieldset>
+
+<script src="js/code.js"></script>
+
+<hr>
+
+Часть 2. Разработать 2-3 примера с использованием JQuery, который включал бы функции из разделов.<br><br>
+
+<!---
+Этот стиль используется для демонстрации возможностей метода jQuery addClass.
+--->
+<style>
+.my-new-class{
+	background:red;
+}
+</style>
+
+<table id="testtable" border="1">
+
+<tr>
+<th>Номер</th>
+<th>Функция jQuery</th>
+<th>Описание</th>
+<th>Пример</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>addClass()</td>
+<td>Добавляет класс к указанным объектам. Старые классы не уничтожаются.</td>
+<td><input id="testbut" type="button" value="Press me" /></td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>offsetParent()</td>
+<td>Возвращает ближайшего родителя.</td>
+<td><input id="testbut" type="button" value="Press me" /></td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>:image</td>
+<td>Возвращает элемент input с типом image.</td>
+<td><input id="testbut" type="image" value="Press me" src="but3a.png" /></td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>outerWidth()</td>
+<td>Получает текущий outerWidth.</td>
+<td><input id="testbut" type="button" value="Press me" /></td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>html()</td>
+<td>Возвращает содержание HTML.</td>
+<td><p><input id="testbut" type="button" value="Press me" src="" /></p></td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>children()</td>
+<td>Возвращает список детей объекта.</td>
+<td><input id="testbut" type="button" value="Press me" /></td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>one()</td>
+<td>Добавляет обработчик события который будет вызван единожды.</td>
+<td><input id="testbut" type="button" value="Press me" /></td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>mousedown()</td>
+<td>Устанавливет обработчик события на непосредственное нажатие кнопки мыши.</td>
+<td><input id="testbut" type="button" value="Press me" /></td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>change()</td>
+<td>Устанавливает обработчик на события change. Применимо только к типу input. Является сокращением для метода on("change", fun).</td>
+<td><input id="testbut" type="button" value="Press me" /></td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>animate()</td>
+<td>Позволяет запустить анимацию свойств CSS.</td>
+<td><input id="testbut" type="button" value="Press me" /></td>
+</tr>
+
+</table>
+
+<script src="js/jq-ex.js"></script>
+
+</body>
+</html>
