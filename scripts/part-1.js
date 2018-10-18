@@ -54,7 +54,7 @@ function g(data, stat) {
 	// Парсим входные данне файла при помощи библиотеки PapaParse.
 	// Также параметр "encoding" выставляем как "utf-8" чтобы
 	// не сбить русские шрифты.
-	var dt = Papa.parse(data/*, {encoding: "utf-8"}*/);
+	var dt = Papa.parse(data, {encoding: "utf-8"});
 	
 	// Преобразовываем массив объектов в массив переключателей.
 	var rows = [1, 0, 0, 0, 0];
