@@ -28,6 +28,4 @@ function getVariant(variant) {
 
 $(document).ready(function() {
 	$("#part_1_description").append(getVariant(my_variant));
-	$("#part_1").load("part-1.html");
-	$("#part_2").load("part-2.html");
 });
