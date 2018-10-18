@@ -16,8 +16,8 @@ function getVariant(variant) {
 		"C) serializeArray"
 	];
 
-	var v1 = (variant - 1) % 2;
-	var v2 = (variant - 1) % 3;
+	var v1 = parseInt((variant - 1) % 2);
+	var v2 = parseInt((variant - 1) % 3);
 	var v3 = parseInt((variant - 1) / 3) % 3;
 
 	var str = "Отображение этой информации " + t1[v1] + ";<br>" +
