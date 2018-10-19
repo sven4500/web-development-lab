@@ -1,62 +1,3 @@
-function checkImage(fn) {
-	// Метод проверяет доступность ресурса.
-	// Инициируем HEAD-запрос чтобы проверить доступность ресурса
-	// без фактической загрузки его тела. Третий параметр установлен
-	// как false что означает что запрос инициируется асинхронно.
-	// Это важно потому что нужно дождаться ответа.
-	var h = new XMLHttpRequest();
-	h.open("HEAD", fn, false);
-	h.send();
-	return h.status != 404;
-}
-
-function constructHtmlTable(dt, rows) {
-	var tb = "";
-	tb += "<table border=\"1\">";
-	
-	for(var i = 0; i < dt.data.length; ++i) {
-		tb += "<tr>";
-		
-		// исполнитель
-		if(rows[0] != 0) {
-			tb += "<th>" + dt.data[i][0] + "</th>";
-		}
-		
-		// альбом
-		if(rows[2] != 0) {
-			tb += "<th>" + dt.data[i][2] + "</th>";
-		}
-		
-		// жанр
-		if(rows[1] != 0) {
-			tb += "<th>" + dt.data[i][1] + "</th>";
-		}
-		
-		// год
-		if(rows[3] != 0) {
-			tb += "<th>" + dt.data[i][3] + "</th>";
-		}
-		
-		// обложка
-		if(rows[4] != 0) {
-			var fn = "covers/" + dt.data[i][4];
-			
-			// Проверяем доступность ресурса. Если недоступен,
-			// то заменяем обложку на рисунок по-умолчанию.
-			if(checkImage(fn) == false) {
-				fn = "covers/default.jpg";
-			}
-			
-			tb += "<th>" + "<img src=\"" + fn + "\" />" + "</th>";
-		}
-		
-		tb += "</tr>";
-	}
-	
-	tb += "</table>";
-	return tb;
-}
-
 function g(data, stat) {
 	// Парсим входные данне файла при помощи библиотеки PapaParse.
 	// Также параметр "encoding" выставляем как "utf-8" чтобы
@@ -75,14 +16,12 @@ function g(data, stat) {
 	}
 	
 	// Создаём HTML код таблицы и помещаем его на место div'а.
-	var tb = constructHtmlTable(dt, rows);
+	var tb = constructHtmlTable(dt, rows, "my_table");
 	$("#table_place").html(tb);
 }
 
-function update_request() {
-	$.get("database.csv", g);
-}
-
 $(document).ready(function() {
-	$("#update_but").click(update_request);
+	$("#update_but").click(function () {
+		$.get("database.csv", g);
+	});
 });
