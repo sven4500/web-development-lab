@@ -27,5 +27,5 @@ function getVariant(variant) {
 }
 
 $(document).ready(function() {
-	$("#part_1_description").append(getVariant(my_variant));
+	$("#part_1_description").append("<b>" + getVariant(my_variant) + "</b>");
 });
