@@ -6,5 +6,24 @@
 		<script src="scripts/part-2.js"></script>
 	</head>
 	<body>
+		<fieldset>
+			<legend>Из чего сделать DataTable?</legend>
+			<input type="radio" name="data_source" id="html_to_dt_radio" />
+			<label for="html_to_dt_radio">HTML</label>
+			<br>
+			<input type="radio" name="data_source" id="js_to_dt_radio" />
+			<label for="js_to_dt_radio">JS</label>
+			<br>
+			<input type="radio" name="data_source" id="json_to_dt_radio" />
+			<label for="json_to_dt_radio">JSON</label>
+			<br>
+			<input type="button" id="get_src_but" value="Данные" />
+			<input type="button" id="mk_tbl_but" value="DataTable" />
+			<input type="button" id="rst_but" value="Сбросить" />
+		</fieldset>
+		<fieldset>
+			<legend>Результат</legend>
+			<div id="table_placeholder" />
+		</fieldset>
 	</body>
 </html>
