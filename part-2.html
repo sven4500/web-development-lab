@@ -7,6 +7,7 @@
 		<script src="scripts/part-2-param.js"></script>
 		<script src="scripts/part-2-events.js"></script>
 		<script src="scripts/part-2-api.js"></script>
+		<!-- Минимальные стили для DataTable -->
 		<link rel="stylesheet" href="scripts/datatables.min.css" />
 	</head>
 	<body>
@@ -22,18 +23,51 @@
 			<label for="json_to_dt_radio">JSON</label>
 			<br>
 			<textarea id="src_text""></textarea>
+			<br>
+			<input type="button" id="mk_but" value="DataTable" />
 		</fieldset>
 		<fieldset>
 			<legend>Какие использовать параметры?</legend>
+			<input type="checkbox" />
+			<label for=""><code>ordering</code></label>
+			<br>
+			<input type="checkbox" />
+			<label for=""><code>search</code></label>
+			<br>
+			<input type="checkbox" />
+			<label for=""><code>paging</code></label>
+			<br>
+			<input type="checkbox" />
+			<label for=""><code>scrollX</code></label>
+			<br>
+			<input type="checkbox" />
+			<label for=""><code>scrollY</code></label>
+			<br>
 		</fieldset>
 		<fieldset>
-			<legend>Какие использовать обработчики событий?</legend>
+			<legend>Какие события обрабатывать?</legend>
+			<input type="checkbox" />
+			<label for=""><code>click</code></label>
+			<br>
+			<input type="checkbox" />
+			<label for=""><code>order</code></label>
+			<br>
+			<input type="checkbox" />
+			<label for=""><code>search</code></label>
+			<br>
 		</fieldset>
 		<fieldset>
 			<legend>DataTable API</legend>
+			<input type="button" value="Добавить" />
+			<br>
+			<input type="text" />
+			<input type="button" value="Удалить" />
+			<br>
+			<input type="text" />
+			<input type="button" value="Спрятать/Показать" />
+			<br>
 		</fieldset>
-		<input type="button" id="mk_but" value="DataTable" />
-		<br><br>
+		<br><hr><br>
 		<div id="table_placeholder" />
 	</body>
 </html>

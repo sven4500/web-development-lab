@@ -64,30 +64,29 @@ function prepData() {
 
 function createDataTable() {
 	$("#" + html_table_id).DataTable().destroy(true);
+	var tb = "";
 	var tb_tx = $("#src_text").val();
 	var par = composeParam();
 	switch(getDataSource()) {
 		case "html2dt":
-			$("#table_placeholder").html(tb_tx);
-			$("#" + html_table_id).DataTable();
+			tb = tb_tx;
 			break;
 		case "js2dt":
+			tb = makeHtmlTable(0, 0, html_table_id);
 			var func = new Function(tb_tx + "return dataSet;");
 			var dt = func();
-			var tb = makeHtmlTable(0, 0, html_table_id);
-			$("#table_placeholder").html(tb);
-			$("#" + html_table_id).DataTable({data: dt, columns: dt});
+			par.data = dt;
+			par.columns = dt;
 			break;
 		case "json2dt":
-			var tb = makeHtmlTable(1, 2, html_table_id);
-			$("#table_placeholder").html(tb);
-			par["ajax"] = tb_tx;
-			$("#table_example").DataTable(par);
+			tb = makeHtmlTable(1, 2, html_table_id);
+			par.ajax = tb_tx;
 			break;
 		default:
-			console.log("");
 			break;
 	}
+	$("#table_placeholder").html(tb);
+	$("#table_example").DataTable(par);
 }
 
 $(document).ready(function() {
