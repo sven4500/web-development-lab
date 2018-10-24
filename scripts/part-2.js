@@ -39,11 +39,38 @@ function makeJsonTable(n_rows, n_cols, id) {
 	return "./example.json";
 }
 
+// Метод добавляет поля у параметру на основании выбранных
+// возможносей таблицы DataTable.
+function composeParam() {
+	var p = {};
+	p.ordering = $("#ordering_ck").is(":checked");
+	p.searching = $("#searching_ck").is(":checked");
+	p.paging = $("#paging_ck").is(":checked");
+	return p;
+}
+
+function onClickHandler() {
+	alert("click");
+}
+
+function onOrderHandler() {
+	alert("order");
+}
+
+function onSearchHandler() {
+	alert("search");
+}
+
+function onPageHandler() {
+	alert("page");
+}
+
 // Метод вохвразает тип входных данных на основании которых будет сконструирована таблица DataTable.
 function getDataSource() {
 	return $("input:radio[name='data_source']:checked").val();
 }
 
+// Метод помещает в окошко текст с исходными данными для таблицы.
 function prepData() {
 	var tx = "";
 	switch(getDataSource()) {
@@ -64,9 +91,9 @@ function prepData() {
 
 function createDataTable() {
 	$("#" + html_table_id).DataTable().destroy(true);
-	var tb = "";
 	var tb_tx = $("#src_text").val();
 	var par = composeParam();
+	var tb = "";
 	switch(getDataSource()) {
 		case "html2dt":
 			tb = tb_tx;
@@ -85,8 +112,25 @@ function createDataTable() {
 		default:
 			break;
 	}
+	// Добавляем в div HTML версию таблицы. В завистмости от типа исходных данных
+	// таблица строится польностью как HTML либо в виде просто тега.
 	$("#table_placeholder").html(tb);
-	$("#table_example").DataTable(par);
+	var tb_dom = $("#" + html_table_id);
+	if(typeof tb_dom != "undefined") {
+		if($("#click_handler").is(":checked")) {
+			$(tb_dom).on("click", onClickHandler);
+		}
+		if($("#order_handler").is(":checked")) {
+			$(tb_dom).on("order.dt", onOrderHandler);
+		}
+		if($("#search_handler").is(":checked")) {
+			$(tb_dom).on("search.dt", onSearchHandler);
+		}
+		if($("#page_handler").is(":checked")) {
+			$(tb_dom).on("page.dt", onPageHandler);
+		}
+		$(tb_dom).DataTable(par);
+	}
 }
 
 $(document).ready(function() {

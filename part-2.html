@@ -1,14 +1,13 @@
 ﻿<html>
 	<head>
+		<!-- Библиотеки -->
 		<script src="scripts/jquery-3.3.1.min.js"></script>
 		<script src="scripts/papaparse.min.js"></script>
 		<script src="scripts/datatables.min.js"></script>
-		<script src="scripts/part-2.js"></script>
-		<script src="scripts/part-2-param.js"></script>
-		<script src="scripts/part-2-events.js"></script>
-		<script src="scripts/part-2-api.js"></script>
 		<!-- Минимальные стили для DataTable -->
 		<link rel="stylesheet" href="scripts/datatables.min.css" />
+		<!-- Основной скрипт с логикой -->
+		<script src="scripts/part-2.js"></script>
 	</head>
 	<body>
 		<fieldset>
@@ -28,32 +27,29 @@
 		</fieldset>
 		<fieldset>
 			<legend>Какие использовать параметры?</legend>
-			<input type="checkbox" />
-			<label for=""><code>ordering</code></label>
+			<input type="checkbox" id="ordering_ck" />
+			<label for="ordering_ck"><code>ordering</code></label>
 			<br>
-			<input type="checkbox" />
-			<label for=""><code>search</code></label>
+			<input type="checkbox" id="searching_ck" />
+			<label for="searching_ck"><code>searching</code></label>
 			<br>
-			<input type="checkbox" />
-			<label for=""><code>paging</code></label>
-			<br>
-			<input type="checkbox" />
-			<label for=""><code>scrollX</code></label>
-			<br>
-			<input type="checkbox" />
-			<label for=""><code>scrollY</code></label>
+			<input type="checkbox" id="paging_ck" />
+			<label for="paging_ck"><code>paging</code></label>
 			<br>
 		</fieldset>
 		<fieldset>
 			<legend>Какие события обрабатывать?</legend>
-			<input type="checkbox" />
+			<input type="checkbox" id="click_handler" />
 			<label for=""><code>click</code></label>
 			<br>
-			<input type="checkbox" />
+			<input type="checkbox" id="order_handler" />
 			<label for=""><code>order</code></label>
 			<br>
-			<input type="checkbox" />
+			<input type="checkbox" id="search_handler" />
 			<label for=""><code>search</code></label>
+			<br>
+			<input type="checkbox" id="page_handler" />
+			<label for="page_handler"><code>page</code></label>
 			<br>
 		</fieldset>
 		<fieldset>
@@ -67,7 +63,9 @@
 			<input type="button" value="Спрятать/Показать" />
 			<br>
 		</fieldset>
-		<br><hr><br>
+		<br>
+		<hr>
+		<br>
 		<div id="table_placeholder" />
 	</body>
 </html>
