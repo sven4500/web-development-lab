@@ -1,6 +1,6 @@
 // Просто шлобальный идентификатор HTML версии таблицы.
 // Прочто чтобы мы не запутались.
-var html_table_id = "table_example";
+var html_table_id = "example_table";
 
 // Метод создаёт строку HTML таблиы произвольного размера.
 function makeHtmlTable(n_rows, n_cols, id) {
@@ -133,9 +133,53 @@ function createDataTable() {
 	}
 }
 
+function onAddRow() {
+	console.log("onAddRow");
+	var tb = $("#example_table");
+	console.log(tb);
+	// Получаем количество строк и столбцов нашей таблицы.
+	// Будут нужны нам для того чтобы подготовить новую строку с данными.
+	var num_cols = $(tb).DataTable().columns().nodes().length;
+	var num_rows = $(tb).DataTable().rows().nodes().length;
+	console.log(num_rows);
+	console.log(num_cols);
+	if(num_cols > 0) {
+		var new_row = [];
+		for(var i = 0; i < num_cols; ++i) {
+			new_row[i] = "NewItem_" + (i + 1) + "_" + (num_rows + 1);
+		}
+		// Чтобы увидеть новую строку нужно обновить отризовку таблицы.
+		// Параметр false означает что не нужно сбрасывать текущую страницу.
+		$(tb).DataTable().row.add(new_row).draw(false);
+	}
+}
+
+function onDeleteRow() {
+	console.log("onDeleteRow");
+	var i_row = $("#row_to_manipulate").val();
+	console.log(i_row);
+	if(i_row >= 0) {
+		var tb = $("#example_table").DataTable();
+		tb.row(i_row).remove().draw(false);
+	}
+}
+
+function onShowHideRow() {
+	console.log("onShowHideRow");
+	var i_col = $("#row_to_manipulate").val();
+	if(i_col >= 0) {
+		var col = $("#example_table").DataTable().column(i_col, {page: "current"});
+		console.log(col);
+		col.visible(!col.visible());
+	}
+}
+
 $(document).ready(function() {
 	$("#html_to_dt_radio").click(prepData);
 	$("#js_to_dt_radio").click(prepData);
 	$("#json_to_dt_radio").click(prepData);
 	$("#mk_but").click(createDataTable);
+	$("#add_row_but").click(onAddRow);
+	$("#del_row_but").click(onDeleteRow);
+	$("#show_hide_row_but").click(onShowHideRow);
 });
