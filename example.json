@@ -9,5 +9,10 @@
 			"Item_2_1",
 			"Item_2_2"
 		]
+	],
+	"columns":
+	[
+		"HeadItem_1",
+		"HeadItem_2"
 	]
 }

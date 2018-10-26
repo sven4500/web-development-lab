@@ -142,8 +142,16 @@ function createDataTable() {
 			}
 			break;
 		case "json2dt":
-			tb = makeHtmlTable(1, 2, html_table_id);
-			par.ajax = tb_tx;
+			tb = makeHtmlTable(0, 0, "example_table");
+			par.ajax = {
+				"url": tb_tx,
+				"dataSrc": "data",
+				"type": "GET"
+			};
+			// Здесь очень хитрый момент. По всей видимости не существует нормального
+			// способа получить заголовок для табоицы из файла JSON поэтому нужно
+			// жёстко задавать заголовок таблицы.
+			par.columns = [{title: "HeaderItem_1"}, {title: "HeaderItem_2"}];
 			break;
 		default:
 			break;
