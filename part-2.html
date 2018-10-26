@@ -21,7 +21,7 @@
 			<input type="radio" name="data_source" id="json_to_dt_radio" value="json2dt" />
 			<label for="json_to_dt_radio">JSON</label>
 			<br>
-			<textarea id="src_text""></textarea>
+			<textarea id="src_text"" rows="10" cols="80"></textarea>
 			<br>
 			<input type="button" id="mk_but" value="DataTable" />
 		</fieldset>
@@ -40,13 +40,13 @@
 		<fieldset>
 			<legend>Какие события обрабатывать?</legend>
 			<input type="checkbox" id="click_handler" />
-			<label for=""><code>click</code></label>
+			<label for="click_handler"><code>click</code></label>
 			<br>
 			<input type="checkbox" id="order_handler" />
-			<label for=""><code>order</code></label>
+			<label for="order_handler"><code>order</code></label>
 			<br>
 			<input type="checkbox" id="search_handler" />
-			<label for=""><code>search</code></label>
+			<label for="search_handler"><code>search</code></label>
 			<br>
 			<input type="checkbox" id="page_handler" />
 			<label for="page_handler"><code>page</code></label>
@@ -54,15 +54,13 @@
 		</fieldset>
 		<fieldset>
 			<legend>DataTable API</legend>
-			<input id="row_to_manipulate" type="text" />
+			<input id="row_to_manipulate" type="text" value="0" />
 			<input id="add_row_but" type="button" value="Добавить" />
 			<input id="del_row_but" type="button" value="Удалить" />
 			<input id="show_hide_row_but" type="button" value="Спрятать" />
 			<br>
 		</fieldset>
-		<br>
 		<hr>
-		<br>
 		<div id="table_placeholder" />
 	</body>
 </html>
