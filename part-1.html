@@ -1,12 +1,13 @@
 ﻿<html>
 	<head>
-		<script src="scripts/jquery-3.3.1.min.js"></script>
-		<script src="scripts/papaparse.min.js"></script>
-		<script src="scripts/datatables.min.js"></script>
-		<script src="scripts/part-1.js"></script>
-		
+		<!-- Библиотеки -->
+		<script src="env/jquery/jquery-3.3.1.min.js"></script>
+		<script src="env/papaparse/papaparse.min.js"></script>
+		<script src="env/datatables/datatables.min.js"></script>
 		<!-- Добавляем минимальные стили CSS чтобы таблица смотрелась красиво -->
-		<link rel="stylesheet" href="scripts/datatables.min.css" />
+		<link rel="stylesheet" href="env/datatables/datatables.min.css" />
+		<!-- Основная логика программы -->
+		<script src="scripts/part-1.js"></script>
 	</head>
 	<body>
 		<form id="rows_to_show">
@@ -19,6 +20,7 @@
 			<input type="checkbox" name="5">DataTable</input>
 		</form>
 		<input id="update_but" type="button" value="Построить таблцу" />
+		<hr>
 		<!-- В этот div программно поместим таблиуц. -->
 		<div id="table_place" />
 	</body>
