@@ -26,17 +26,36 @@ function makeHtmlTable(n_rows, n_cols, id) {
 	return tb;
 }
 
+// Метод создаёт строку кода JS-массива данных таблицы.
 function makeJsTable(n_rows, n_cols, id) {
 	var tb = "";
-	tb += "var dataSet = [\n" +
-		"  [\"Item_1_1\", \"Item_1_2\"],\n" +
-		"  [\"Item_2_1\", \"Item_2_2\"]\n" +
-		"];";
+	tb += "var dataSet = [\n";
+	for(var i = 0; i < n_rows; ++i) {
+		tb += "  [";
+		for(var j = 0; j < n_cols; ++j) {
+			if(i == 0) {
+				tb += "\"HeadItem_" + (j + 1) + "\"";
+			}
+			else {
+				tb += "\"Item_" + (j + 1) + "_" + (i + 0) + "\"";
+			}			
+			if(j != n_cols - 1) {
+				tb += ", ";
+			}
+		}
+		tb += "]";
+		if(i != n_rows - 1) {
+			tb += ",";
+		}
+		tb += "\n";
+	}
+	tb += "];";
 	return tb;
 }
 
 function makeJsonTable(n_rows, n_cols, id) {
-	return "./example.json";
+	var tb = "./example.json";
+	return tb;
 }
 
 // Метод добавляет поля у параметру на основании выбранных
@@ -75,15 +94,18 @@ function prepData() {
 	var tx = "";
 	switch(getDataSource()) {
 		case "html2dt":
-			tx = makeHtmlTable(7, 5, html_table_id);
+			tx = makeHtmlTable(7, 5, "example_table");
 			break;
 		case "js2dt":
-			tx = makeJsTable(7, 5, html_table_id);
+			tx = makeJsTable(7, 5, "example_table");
 			break;
 		case "json2dt":
-			tx = makeJsonTable(0, 0, html_table_id);
+			// Здесь конечно же таблица создана не будет.
+			// Просто для консистентности кода.
+			tx = makeJsonTable(0, 0, "example_table");
 			break;
 		default:
+			tx = "Не существует такого метода конструирования таблицы!";
 			break;
 	}
 	$("#src_text").val(tx);
@@ -99,11 +121,25 @@ function createDataTable() {
 			tb = tb_tx;
 			break;
 		case "js2dt":
-			tb = makeHtmlTable(0, 0, html_table_id);
+			tb = makeHtmlTable(0, 0, "example_table");
 			var func = new Function(tb_tx + "return dataSet;");
 			var dt = func();
-			par.data = dt;
-			par.columns = dt;
+			var num_rows = dt.length;
+			var num_cols = (num_rows >= 1) ? dt[0].length : 0;
+			console.log(dt);
+			console.log(num_rows);
+			console.log(num_cols);
+			if(num_rows >= 1 && num_cols >= 1) {
+				// Здесь нужно собрать массив данных для заголовка таблицы. Будем брать
+				// первую строку из массива данных котоый нам вернула функция.
+				var cols = [];
+				for(var i = 0; i < num_cols; ++i) {
+					cols[i] = {};
+					cols[i].title = dt[0][i];
+				}
+				par.data = dt.splice(1, num_rows - 1)
+				par.columns = cols;
+			}
 			break;
 		case "json2dt":
 			tb = makeHtmlTable(1, 2, html_table_id);
@@ -115,7 +151,7 @@ function createDataTable() {
 	// Добавляем в div HTML версию таблицы. В завистмости от типа исходных данных
 	// таблица строится польностью как HTML либо в виде просто тега.
 	$("#table_placeholder").html(tb);
-	var tb_dom = $("#" + html_table_id);
+	var tb_dom = $("#example_table");
 	if(typeof tb_dom != "undefined") {
 		if($("#click_handler").is(":checked")) {
 			$(tb_dom).on("click", onClickHandler);
