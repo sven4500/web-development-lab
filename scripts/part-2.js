@@ -112,7 +112,7 @@ function prepData() {
 }
 
 function createDataTable() {
-	$("#" + html_table_id).DataTable().destroy(true);
+	$("#example_table").DataTable().destroy(true);
 	var tb_tx = $("#src_text").val();
 	var par = composeParam();
 	var tb = "";
@@ -165,6 +165,7 @@ function createDataTable() {
 		if($("#page_handler").is(":checked")) {
 			$(tb_dom).on("page.dt", onPageHandler);
 		}
+		// Создаём таблицу.
 		$(tb_dom).DataTable(par);
 	}
 }
