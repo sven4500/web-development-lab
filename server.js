@@ -1,9 +1,10 @@
 // Запрашиваем модуль для работы с протоколом HTTP.
 var http = require("http");
+var url = require("url");
 
 // Устанавливаем обработчик HTTP запроса по 
-var srv = http.createServer(onRequire);
-srv.listen(8000);
+var server = http.createServer(onRequire);
+server.listen(8000);
 
 var dim = {"width": 640,
 	"height": 480};
@@ -17,10 +18,16 @@ var nor = {"x": Math.random(),
 var speed = 10;
 
 function onRequire(req, res) {
-	// Возвращаем код 200 и сообщаем что ресурс найден.
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.write(pos);
-	res.end();
+	var path = url.parse(req.url).pathname;
+	if(path == "/data" && req.method == "GET") {
+		// Просто обязательно необходимо выставить заголовок Access-Control-Allow-Origin
+		// чтобы мы могли выполнить кросдоменный запрос.
+		res.writeHead(200, {"Content-Type": "text/plain"});
+		res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
+		res.write(String(pos.x) + "," + String(pos.y));
+		res.end();
+		console.log("Requested...");
+	}
 }
 
 function onFrame() {
