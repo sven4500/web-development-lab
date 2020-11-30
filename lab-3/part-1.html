@@ -1,0 +1,27 @@
+﻿<html>
+	<head>
+		<!-- Библиотеки -->
+		<script src="env/jquery/jquery-3.3.1.min.js"></script>
+		<script src="env/papaparse/papaparse.min.js"></script>
+		<script src="env/datatables/datatables.min.js"></script>
+		<!-- Добавляем минимальные стили CSS чтобы таблица смотрелась красиво -->
+		<link rel="stylesheet" href="env/datatables/datatables.min.css" />
+		<!-- Основная логика программы -->
+		<script src="scripts/part-1.js"></script>
+	</head>
+	<body>
+		<form id="rows_to_show">
+			<!-- Обязательно добавляем атрибут name
+			иначе метод serializeArray не сработает. -->
+			<input type="checkbox" name="1">Жанр</input>
+			<input type="checkbox" name="2">Альбом</input>
+			<input type="checkbox" name="3">Год</input>
+			<input type="checkbox" name="4">Обложка</input>
+			<input type="checkbox" name="5">DataTable</input>
+		</form>
+		<input id="update_but" type="button" value="Построить таблцу" />
+		<hr>
+		<!-- В этот div программно поместим таблиуц. -->
+		<div id="table_place" />
+	</body>
+</html>

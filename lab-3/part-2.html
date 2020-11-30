@@ -1,0 +1,66 @@
+﻿<html>
+	<head>
+		<!-- Библиотеки -->
+		<script src="env/jquery/jquery-3.3.1.min.js"></script>
+		<script src="env/papaparse/papaparse.min.js"></script>
+		<script src="env/datatables/datatables.min.js"></script>
+		<!-- Минимальные стили для DataTable -->
+		<link rel="stylesheet" href="env/datatables/datatables.min.css" />
+		<!-- Основной скрипт с логикой -->
+		<script src="scripts/part-2.js"></script>
+	</head>
+	<body>
+		<fieldset>
+			<legend>Из чего сделать DataTable?</legend>
+			<input type="radio" name="data_source" id="html_to_dt_radio" value="html2dt" />
+			<label for="html_to_dt_radio">HTML</label>
+			<br>
+			<input type="radio" name="data_source" id="js_to_dt_radio" value="js2dt" />
+			<label for="js_to_dt_radio">JS</label>
+			<br>
+			<input type="radio" name="data_source" id="json_to_dt_radio" value="json2dt" />
+			<label for="json_to_dt_radio">JSON</label>
+			<br>
+			<textarea id="src_text"" rows="10" cols="80"></textarea>
+			<br>
+			<input type="button" id="mk_but" value="DataTable" />
+		</fieldset>
+		<fieldset>
+			<legend>Какие использовать параметры?</legend>
+			<input type="checkbox" id="ordering_ck" />
+			<label for="ordering_ck"><code>ordering</code></label>
+			<br>
+			<input type="checkbox" id="searching_ck" />
+			<label for="searching_ck"><code>searching</code></label>
+			<br>
+			<input type="checkbox" id="paging_ck" />
+			<label for="paging_ck"><code>paging</code></label>
+			<br>
+		</fieldset>
+		<fieldset>
+			<legend>Какие события обрабатывать?</legend>
+			<input type="checkbox" id="click_handler" />
+			<label for="click_handler"><code>click</code></label>
+			<br>
+			<input type="checkbox" id="order_handler" />
+			<label for="order_handler"><code>order</code></label>
+			<br>
+			<input type="checkbox" id="search_handler" />
+			<label for="search_handler"><code>search</code></label>
+			<br>
+			<input type="checkbox" id="page_handler" />
+			<label for="page_handler"><code>page</code></label>
+			<br>
+		</fieldset>
+		<fieldset>
+			<legend>DataTable API</legend>
+			<input id="row_to_manipulate" type="text" value="0" />
+			<input id="add_row_but" type="button" value="Добавить" />
+			<input id="del_row_but" type="button" value="Удалить" />
+			<input id="show_hide_row_but" type="button" value="Спрятать" />
+			<br>
+		</fieldset>
+		<hr>
+		<div id="table_placeholder" />
+	</body>
+</html>
